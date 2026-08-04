@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; color: #222; }
+      nav { background: #1f2937; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+      nav a { color: white; text-decoration: none; margin-left: 1rem; }
+      .container { max-width: 1000px; margin: 2rem auto; padding: 1rem 2rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+      .card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+      .btn { display: inline-block; padding: 0.6rem 1rem; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; }
+      .error { color: #b91c1c; background: #fee2e2; padding: 0.8rem; border-radius: 6px; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div><strong>EventHub</strong></div>
+      <div>
+        <a href="/">Eventos</a>
+        <% if (user) { %>
+          <% if (user.tipo === 'organizador') { %>
+            <a href="/eventos/novo">Criar evento</a>
+          <% } %>
+          <a href="/logout">Sair</a>
+        <% } else { %>
+          <a href="/registro">Registrar</a>
+          <a href="/login">Entrar</a>
+        <% } %>
+      </div>
+    </nav>
+    <main class="container">
+      <h1>Eventos em destaque</h1>
+      <p>Explore eventos, participe e acompanhe inscrições.</p>
+      <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+        <div class="error"><%= errorMessage %></div>
+      <% } %>
+      <% if (events.length > 0) { %>
+        <div class="grid">
+          <% events.forEach((event) => { %>
+            <div class="card">
+              <h3><%= event.titulo %></h3>
+              <p><strong>Data:</strong> <%= new Date(event.data_inicio).toLocaleString('pt-BR') %></p>
+              <p><strong>Local:</strong> <%= event.local %></p>
+              <p><strong>Capacidade:</strong> <%= event.capacidade %></p>
+              <p><strong>Inscrições:</strong> <%= event.total_inscricoes %></p>
+              <p><%= event.descricao %></p>
+              <a class="btn" href="/eventos/<%= event.id %>">Ver detalhes</a>
+            </div>
+          <% }) %>
+        </div>
+      <% } else { %>
+        <p>Nenhum evento disponível no momento.</p>
+      <% } %>
+    </main>
+  </body>
+</html>

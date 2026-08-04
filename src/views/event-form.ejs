@@ -1,0 +1,10 @@
+<h2><%= title %></h2>
+<% if (error) { %><div class="error"><%= error %></div><% } %>
+<form action="<%= event ? '/eventos/' + event.id + '/editar' : '/eventos/novo' %>" method="POST">
+  <input type="text" name="titulo" placeholder="Título" value="<%= event ? event.titulo : '' %>" required />
+  <textarea name="descricao" placeholder="Descrição" required><%= event ? event.descricao : '' %></textarea>
+  <input type="datetime-local" name="data_inicio" value="<%= event ? new Date(event.data_inicio).toISOString().slice(0, 16) : '' %>" required />
+  <input type="text" name="local" placeholder="Local" value="<%= event ? event.local : '' %>" required />
+  <input type="number" name="capacidade" placeholder="Capacidade" value="<%= event ? event.capacidade : '' %>" required />
+  <button class="btn" type="submit">Salvar</button>
+</form>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> - EventHub</title>
+    <style>
+      body { font-family: Arial, sans-serif; margin: 0; background: #f5f5f5; color: #222; }
+      nav { background: #1f2937; color: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+      nav a { color: white; text-decoration: none; margin-left: 1rem; }
+      .container { max-width: 1000px; margin: 2rem auto; padding: 1rem 2rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+      .card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+      .btn { display: inline-block; padding: 0.6rem 1rem; background: #2563eb; color: white; text-decoration: none; border-radius: 6px; border: none; cursor: pointer; }
+      .btn-danger { background: #dc2626; }
+      .btn-secondary { background: #6b7280; }
+      form input, form textarea, form select { width: 100%; padding: 0.7rem; margin-bottom: 0.8rem; border: 1px solid #ccc; border-radius: 6px; }
+      .error { color: #b91c1c; background: #fee2e2; padding: 0.8rem; border-radius: 6px; }
+      .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div><strong>EventHub</strong></div>
+      <div>
+        <a href="/">Eventos</a>
+        <% if (user) { %>
+          <% if (user.tipo === 'organizador') { %>
+            <a href="/eventos/novo">Criar evento</a>
+          <% } %>
+          <a href="/logout">Sair</a>
+        <% } else { %>
+          <a href="/registro">Registrar</a>
+          <a href="/login">Entrar</a>
+        <% } %>
+      </div>
+    </nav>
+    <main class="container">
+      <%- body %>
+    </main>
+  </body>
+</html>
