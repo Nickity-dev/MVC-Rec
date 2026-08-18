@@ -8,6 +8,11 @@ const mainRoutes = require('./src/routes/mainRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Permite que cookies seguros funcionem quando o Render encaminha a requisição HTTPS.
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'src', 'views'));
 app.locals.pretty = true;
