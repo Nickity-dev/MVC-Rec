@@ -1,7 +1,36 @@
-<h2>Entrar</h2>
-<% if (error) { %><div class="error"><%= error %></div><% } %>
-<form action="/login" method="POST">
-  <input type="email" name="email" placeholder="E-mail" required />
-  <input type="password" name="senha" placeholder="Senha" required />
-  <button class="btn" type="submit">Entrar</button>
-</form>
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> | EventHub</title>
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+  <body>
+    <main class="auth-card">
+      <a class="brand" href="/" aria-label="Voltar para a página inicial do EventHub">
+        <span class="brand-mark" aria-hidden="true">E</span>
+        EventHub
+      </a>
+
+      <h1>Que bom ver você!</h1>
+      <p class="subtitle">Entre para acompanhar eventos e suas inscrições.</p>
+
+      <% if (error) { %><div class="error" role="alert"><%= error %></div><% } %>
+
+      <form action="/login" method="POST">
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" name="email" placeholder="voce@email.com" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" name="senha" placeholder="Digite sua senha" autocomplete="current-password" required />
+        </div>
+        <button class="submit-button" type="submit">Entrar</button>
+      </form>
+
+      <p class="alternate-action">Ainda não tem conta? <a href="/registro">Criar cadastro</a></p>
+    </main>
+  </body>
+</html>

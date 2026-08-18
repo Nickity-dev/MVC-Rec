@@ -1,0 +1,154 @@
+:root {
+  --navy: #172554;
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #cbd5e1;
+  --background: #eef4ff;
+  --danger: #b91c1c;
+  --danger-background: #fef2f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: grid;
+  place-items: center;
+  padding: 2rem 1rem;
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  background:
+    radial-gradient(circle at 10% 15%, #bfdbfe 0, transparent 32%),
+    radial-gradient(circle at 90% 85%, #c7d2fe 0, transparent 35%),
+    var(--background);
+}
+
+.auth-card {
+  width: min(100%, 440px);
+  padding: 2.25rem;
+  background: #fff;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(30, 64, 175, 0.16);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.75rem;
+  color: var(--navy);
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brand-mark {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 8px;
+}
+
+h1 {
+  margin: 0 0 0.5rem;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  margin: 0 0 1.75rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.error {
+  margin-bottom: 1.25rem;
+  padding: 0.8rem 0.9rem;
+  color: var(--danger);
+  background: var(--danger-background);
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+}
+
+.field {
+  display: grid;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.8rem 0.9rem;
+  color: var(--text);
+  font: inherit;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.16);
+}
+
+.submit-button {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.85rem 1rem;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--blue);
+  border: 0;
+  border-radius: 8px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.submit-button:hover {
+  background: var(--blue-dark);
+  transform: translateY(-1px);
+}
+
+.alternate-action {
+  margin: 1.5rem 0 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.alternate-action a {
+  color: var(--blue-dark);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.alternate-action a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 1rem;
+  }
+
+  .auth-card {
+    padding: 1.6rem;
+  }
+}

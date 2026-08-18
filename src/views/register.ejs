@@ -1,12 +1,47 @@
-<h2>Criar conta</h2>
-<% if (error) { %><div class="error"><%= error %></div><% } %>
-<form action="/registro" method="POST">
-  <input type="text" name="nome" placeholder="Nome completo" required />
-  <input type="email" name="email" placeholder="E-mail" required />
-  <input type="password" name="senha" placeholder="Senha" required />
-  <select name="tipo">
-    <option value="participante">Participante</option>
-    <option value="organizador">Organizador</option>
-  </select>
-  <button class="btn" type="submit">Cadastrar</button>
-</form>
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %> | EventHub</title>
+    <link rel="stylesheet" href="/css/auth.css" />
+  </head>
+  <body>
+    <main class="auth-card">
+      <a class="brand" href="/" aria-label="Voltar para a página inicial do EventHub">
+        <span class="brand-mark" aria-hidden="true">E</span>
+        EventHub
+      </a>
+
+      <h1>Crie sua conta</h1>
+      <p class="subtitle">Cadastre-se para explorar e participar dos próximos eventos.</p>
+
+      <% if (error) { %><div class="error" role="alert"><%= error %></div><% } %>
+
+      <form action="/registro" method="POST">
+        <div class="field">
+          <label for="nome">Nome completo</label>
+          <input id="nome" type="text" name="nome" placeholder="Como quer ser chamado?" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input id="email" type="email" name="email" placeholder="voce@email.com" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input id="senha" type="password" name="senha" placeholder="Crie uma senha" autocomplete="new-password" required />
+        </div>
+        <div class="field">
+          <label for="tipo">Tipo de conta</label>
+          <select id="tipo" name="tipo">
+            <option value="participante">Participante</option>
+            <option value="organizador">Organizador</option>
+          </select>
+        </div>
+        <button class="submit-button" type="submit">Criar conta</button>
+      </form>
+
+      <p class="alternate-action">Já possui uma conta? <a href="/login">Entrar</a></p>
+    </main>
+  </body>
+</html>
